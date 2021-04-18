@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import BackendService from '../../api/CommonAPI.js'
-import {NOTIFICATIONS_HEADER_DATA, NOTIFICATIONS_BOOLEAN_FIELDS, NOTIFICATION_EDIT_FIELDS, MESSAGES} from '../../Constanst.js'
+import {NOTIFICATIONS_HEADER_DATA, NOTIFICATIONS_BOOLEAN_FIELDS, NOTIFICATION_EDIT_FIELDS, MESSAGES} from '../Constants.js'
 import Utils from '../Utils.js'
 import ComponentsStateService from '../ComponentsStateService.js'
 
@@ -42,13 +41,16 @@ class NotificationComponent extends Component {
         this.handleAutocompleteChange = this.handleAutocompleteChange.bind(this);
 
         this.validateAndSubmit = this.validateAndSubmit.bind(this);
-        // this.submitUpdate = this.submitUpdate.bind(this)
-        // this.submitCreate = this.submitCreate.bind(this)
+        this.reset = this.reset.bind(this)
     }
     
     componentDidMount(){
        this.refreshNotifications();
 
+        this.reset();
+    }
+
+    reset(){
         this.selectNotification(Utils.emptyObj(NOTIFICATIONS_HEADER_DATA))
     }
    
@@ -155,7 +157,8 @@ class NotificationComponent extends Component {
                         feedback={MESSAGES.notificationsEditInfo}
                         validateAndSubmit={this.validateAndSubmit}
                         refreshData={this.refreshNotifications}
-                        
+                        reset={this.reset}
+
                     />
                   }
                 </Paper>

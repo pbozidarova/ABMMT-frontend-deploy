@@ -7,13 +7,13 @@ import Utils from '../Utils.js'
 class FooterComponent extends Component {
 
     render(){
+      const { classes } = this.props;
         return (
             <Typography variant="body2" color="textSecondary" align="center">
               {'Copyright © '}
                 <Link color="inherit" onClick={() => Utils.redirectTo(this.props, "/home")}>Aicraft Base Maintenance Management Tool</Link>
               {' '}
               {new Date().getFullYear()}
-              {'.'}
             </Typography>
           );
     }

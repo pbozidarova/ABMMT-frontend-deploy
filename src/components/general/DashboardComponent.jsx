@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {DASHBOARD_CARDS, ICONS_MAPPING} from '../../Constanst.js'
+import {DASHBOARD_CARDS, ICONS_MAPPING} from '../Constants.js'
 import { withRouter } from 'react-router';
 import clsx from 'clsx';
 import Grid from '@material-ui/core/Grid';
@@ -32,7 +32,7 @@ class DashboardComponent extends Component {
             {Object.keys(DASHBOARD_CARDS).map((card, index) => {
                return <Grid key={`grid_${index}`} item xs={12} md={4} lg={4}> 
                 
-                  <Card className={classes.root} key={index}>
+                <Card className={classes.root} key={index}>
                     <CardActionArea onClick={() => Utils.redirectTo( this.props, `/${card}`)}>
                       <CardMedia
                         className={classes.media}
@@ -50,12 +50,12 @@ class DashboardComponent extends Component {
                           </Typography>
                       </CardContent>
                     </CardActionArea>
-                    <CardActions>
+                    {/* <CardActions>
                       <Button size="small" color="primary" onClick={() => Utils.redirectTo( this.props, `/${card}`)}> 
                           Visit {DASHBOARD_CARDS[card].title} 
                       </Button>
                       
-                  </CardActions>
+                  </CardActions> */}
                   </Card>
                 </Grid>
             })}

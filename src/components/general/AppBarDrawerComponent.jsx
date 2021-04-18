@@ -21,7 +21,7 @@ import DrawerItemsSecondary from './DrawerItemsSecondary.jsx';
 import { styles } from '../UseStyles.js'
 import { withStyles } from '@material-ui/core/styles';
 import Utils from '../Utils.js';
-import { MESSAGES } from '../../Constanst.js';
+import { MESSAGES } from '../Constants.js';
 
 
 
@@ -30,12 +30,15 @@ import { MESSAGES } from '../../Constanst.js';
     constructor(props){
         super(props)
         this.state = {
+            selected: '',
             open : false,
             
         }
         
         this.handleDrawerOpen = this.handleDrawerOpen.bind(this)
-        this.handleDrawerClose = this.handleDrawerClose.bind(this)        
+        this.handleDrawerClose = this.handleDrawerClose.bind(this)    
+        this.select = this.select.bind(this);
+        this.isSelected = this.isSelected.bind(this);    
     }
 
     redirectTo(urlParam){
@@ -49,6 +52,14 @@ import { MESSAGES } from '../../Constanst.js';
     handleDrawerClose = () => {
         this.setState({ open : false })
     };
+
+    select(menuItem) {
+        return this.state.selected = menuItem;
+    }
+
+    isSelected(menuItem) {
+        return this.state.selected === menuItem;
+    }
 
       
     render(){
@@ -71,13 +82,13 @@ import { MESSAGES } from '../../Constanst.js';
                         <img src={logo} className="App-logo" alt="logo" />
                     </IconButton>
                     
-                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} > 
+                    <Typography component="h6" variant="h6" color="inherit" noWrap className={classes.title} > 
                         Aicraft Base Maintenance Management Tool
                     </Typography>
 
                     {isUserLoggedIn && <Button 
                         variant="contained" 
-                        // className={classes.menuButton}
+                        className={classes.logoutButton}
                         onClick={  () => {Utils.infoMessage(handleInfo, MESSAGES.successLogOut ); 
                                             this.redirectTo("/logout"); 
                                             AuthenticationService.logout()}}>
@@ -101,12 +112,17 @@ import { MESSAGES } from '../../Constanst.js';
                     </div>
                     <Divider />
                     <List>
-                        <DrawerItemsMain openNotifications={openNotifications}/>
+                        <DrawerItemsMain 
+                        openNotifications={openNotifications} 
+                        select={this.select} 
+                        isSelected={this.isSelected}/>
                     </List>
 
                     <Divider />
                     <List>
-                        <DrawerItemsSecondary/>
+                        <DrawerItemsSecondary 
+                        select={this.select}
+                        isSelected={this.isSelected}/>
                     </List>
               
                 </Drawer>

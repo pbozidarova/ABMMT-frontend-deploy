@@ -8,7 +8,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { ICONS_MAPPING } from '../../Constanst.js';
+import { ICONS_MAPPING } from '../Constants.js';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 class DrawerItemsSecondary extends Component {
     
@@ -17,6 +19,7 @@ class DrawerItemsSecondary extends Component {
     }
 
     render(){
+        const {select, isSelected} = this.props;
 
         const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
 
@@ -25,27 +28,41 @@ class DrawerItemsSecondary extends Component {
             <>
                 {  isUserLoggedIn &&
                 <div>
-                    <ListItem button onClick={() => Utils.redirectTo(this.props, "/aircraft") }>
+                    <Tooltip title="Aircraft" placement="right">
+                    <ListItem 
+                    key="Aircraft" 
+                    selected={isSelected("Aircraft")} 
+                    button onClick={() => {select("Aircraft"); Utils.redirectTo(this.props, "/aircraft")} }>
                         <ListItemIcon>
                             {ICONS_MAPPING.aircraft}
                         </ListItemIcon>
                         <ListItemText primary="Aircraft" />
                     </ListItem>
+                    </Tooltip>
 
-                    <ListItem button onClick={() => Utils.redirectTo(this.props, "/facilities") }>
+                    <Tooltip title="Faclities" placement="right">
+                    <ListItem 
+                    key="Faclities" 
+                    selected={isSelected("Faclities")} 
+                    button onClick={() =>{select("Faclities"); Utils.redirectTo(this.props, "/facilities") }}>
                         <ListItemIcon>
                             {ICONS_MAPPING.facilities}
                         </ListItemIcon>
                         <ListItemText primary="Faclities" />
                     </ListItem>
+                    </Tooltip>
                         
-                    <ListItem button onClick={() => Utils.redirectTo(this.props, "/users") }>
+                    <Tooltip title="Users" placement="right">
+                    <ListItem
+                    key="Users" 
+                    selected={isSelected("Users")} 
+                    button onClick={() => {select("Users"); Utils.redirectTo(this.props, "/users")}}>
                         <ListItemIcon>
                             {ICONS_MAPPING.users}
                         </ListItemIcon>
                         <ListItemText primary="Users" />
                     </ListItem>
-                    
+                    </Tooltip>
                 </div>
              }
 

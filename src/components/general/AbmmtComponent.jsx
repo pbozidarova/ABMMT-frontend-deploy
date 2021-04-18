@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import BackendService from '../../api/CommonAPI.js'
+import BackendService from '../CommonAPI.js'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -16,7 +16,7 @@ import FooterComponent from './FooterComponent'
 
 import { styles } from '../UseStyles.js'
 import { withStyles } from '@material-ui/core/styles';
-import {MESSAGES} from '../../Constanst.js'
+import {MESSAGES} from '../Constants.js'
 import { Grid } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -67,13 +67,13 @@ class AbmmtComponent extends Component {
             <main className={classes.content}>
               <div className={classes.appBarSpacer} />
                 <Container maxWidth={false} className={classes.container}>
-                  <Grid container spacing={3}>
+                  <Grid container spacing={2}>
                   {/* Here is the info panel */}
                     <Grid item xs={12}>
                       <div>
-                          {this.state.infoPanel.info && <this.Alert severity="info" variant="outlined" >{this.state.infoPanel.info} </this.Alert>}
-                          {this.state.infoPanel.success && <this.Alert severity="success" variant="outlined">{this.state.infoPanel.success} </this.Alert>}
-                          {this.state.infoPanel.error && <this.Alert severity="error" >{this.state.infoPanel.error} </this.Alert>}
+                          {this.state.infoPanel.info && <this.Alert severity="info" className={classes.tableCell}  variant="outlined" >{this.state.infoPanel.info} </this.Alert>}
+                          {this.state.infoPanel.success && <this.Alert severity="success" className={classes.tableCell}  variant="outlined">{this.state.infoPanel.success} </this.Alert>}
+                          {this.state.infoPanel.error && <this.Alert severity="error" className={classes.tableCell}  >{this.state.infoPanel.error} </this.Alert>}
                       </div>
                     </Grid>
 
@@ -84,8 +84,8 @@ class AbmmtComponent extends Component {
                   </Grid>        
                 </Container>
                   
-                <Box pt={4}>
-                  <FooterComponent/>
+                <Box  >
+                  <FooterComponent />
                 </Box> 
           
             </main>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import BackendService from '../../api/CommonAPI.js'
-import {FACILITIES_HEADER_DATA, FACILITIES_BOOLEAN_FIELDS, FACILITY_EDIT_FIELDS, MESSAGES} from '../../Constanst.js'
+import {FACILITIES_HEADER_DATA, FACILITIES_BOOLEAN_FIELDS, FACILITY_EDIT_FIELDS, MESSAGES} from '../Constants.js'
 import Utils from '../Utils.js'
 import ComponentsStateService from '../ComponentsStateService.js'
 
@@ -40,13 +39,16 @@ class FacilityComponent extends Component {
         this.handleInfo = this.handleInfo.bind(this);
 
         this.validateAndSubmit = this.validateAndSubmit.bind(this);    
+        this.reset = this.reset.bind(this)
     }
    
     componentDidMount(){
        this.refreshFacilities();
+        this.reset();
+    }
 
+    reset(){
         this.selectFacility(Utils.emptyObj(FACILITIES_HEADER_DATA));
-
     }
 
     refreshFacilities(){
@@ -145,6 +147,8 @@ class FacilityComponent extends Component {
                     feedback={MESSAGES.facilitiesEditInfo}
                     validateAndSubmit={this.validateAndSubmit}
                     refreshData={this.refreshFacilities}
+                    reset={this.reset}
+
                     />
                   }
                 </Paper>

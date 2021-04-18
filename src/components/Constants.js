@@ -8,17 +8,19 @@ import LocationCityIcon from '@material-ui/icons/LocationCity';
 import PeopleIcon from '@material-ui/icons/People';
 import LocalAirportIcon from '@material-ui/icons/LocalAirport';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import SendIcon from '@material-ui/icons/Send';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
-import aircraftImg from '../src/images/aircraft.jfif'
-import facilitiesImg from '../src/images/facilities.jfif'
-import maintenanceImg from '../src/images/maintenance.jfif'
-import notificationsImg from '../src/images/notifications.jfif'
-import tasksImg from '../src/images/tasks.jfif'
-import usersImg from '../src/images/users.jfif'
+import aircraftImg from '../../src/images/aircraft.jfif'
+import facilitiesImg from '../../src/images/facilities.jfif'
+import maintenanceImg from '../../src/images/maintenance.jfif'
+import notificationsImg from '../../src/images/notifications.jfif'
+import tasksImg from '../../src/images/tasks.jfif'
+import usersImg from '../../src/images/users.jfif'
 
 
-export const BACKEND_URL = 'https://abmmtool.herokuapp.com';
+export const BACKEND_URL = 'http://localhost:8000';
+// export const BACKEND_URL = 'https://abmmtool.herokuapp.com';
 export const SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
 export const MESSAGES = {
@@ -69,7 +71,8 @@ export const ICONS_MAPPING = {
     aircraft: <LocalAirportIcon />,
     update: <CloudUploadIcon />,
     create: < SendIcon/>,
-    attach: <AttachFileIcon/>
+    attach: <AttachFileIcon/>,
+    reset: <HighlightOffIcon/>,
 }
 
 export const DASHBOARD_CARDS = {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import BackendService from '../../api/CommonAPI.js'
-import {TASKS_HEADER_DATA, TASKS_BOOLEAN_FIELDS, TASK_EDIT_FIELDS, MESSAGES} from '../../Constanst.js'
+import {TASKS_HEADER_DATA, TASKS_BOOLEAN_FIELDS, TASK_EDIT_FIELDS, MESSAGES} from '../Constants.js'
 import Utils from '../Utils.js'
 import ComponentsStateService from '../ComponentsStateService.js'
 import { withRouter } from 'react-router';
@@ -41,15 +40,18 @@ class TaskComponent extends Component{
         this.handleAutocompleteChange = this.handleAutocompleteChange.bind(this)
 
         this.validateAndSubmit = this.validateAndSubmit.bind(this);
-        
+        this.reset = this.reset.bind(this)
     }
     
     componentDidMount(){
         this.refreshTasks();
-
-        this.selectTask(Utils.emptyObj(TASKS_HEADER_DATA))
+        this.reset();
     }
-   
+
+    reset(){
+        this.selectTask(Utils.emptyObj(TASKS_HEADER_DATA))
+   }
+
     refreshTasks(){
         let keyState = 'tasks'
         let keyResponse = 'taskViewDtoList'
@@ -139,6 +141,8 @@ class TaskComponent extends Component{
                         feedback={MESSAGES.taskEditInfo}
                         validateAndSubmit={this.validateAndSubmit}
                         refreshData={this.refreshTasks}
+                        reset={this.reset}
+
                     />
                   }
                 </Paper>

@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
 export const theme = createMuiTheme({
@@ -16,22 +16,22 @@ export const theme = createMuiTheme({
       contrastText: '#000',
     },
   },
+
 });
 
 export const drawerWidth = 240;
 // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 export const styles = ( theme ) => ({
   abmmt: {
-      display: 'flex',
-    },
-    root: {
-      // maxWidth: 400,
-      // maxHeight: 300,
-    },
-    media: {
-      height: 140,
-    },
-  
+    display: 'flex',
+   
+  },
+  root: {
+    minHeight: 250,
+  },
+  media: {
+    height: 140,
+  },
     toolbar: {
       paddingRight: 24, // keep right padding when drawer closed
     },
@@ -39,10 +39,11 @@ export const styles = ( theme ) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'flex-end',
-      padding: '0 8px',
+      padding: '0 6px',
       ...theme.mixins.toolbar,
     },
     appBar: {
+      fontSize: 12,
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -58,11 +59,19 @@ export const styles = ( theme ) => ({
       }),
     },
    buttonGroup: {
-     display: 'flex'
+     display: 'flex',
+     justifyContent:"space-between"
    },
     menuButton: { 
-      marginRight: 0,
+      margin: 15,
       flexGrow: 1,
+      fontSize: 12
+      // padding: theme.spacing(1),
+    },
+    logoutButton: { 
+      margin: 15,
+      // flexGrow: 1,
+      fontSize: 12
       // padding: theme.spacing(1),
     },
     menuButtonHidden: {
@@ -107,9 +116,10 @@ export const styles = ( theme ) => ({
       display: 'flex',
       overflow: 'auto',
       flexDirection: 'column',
+      fontSize: 12
     },
     fixedHeight: {
-      height: 550,
+      height: 530,
     },
     fixedHeightMin: {
       height: 300,
@@ -120,10 +130,6 @@ export const styles = ( theme ) => ({
       alignItems: 'center',
       justifyContent: 'center',
       height: 100
-      // justify-content: 'center',
-      // height: 50,
-      // width: 100
-      // margin: theme.spacing(2),
     },
     fabChild: {
       flexGrow: 1
@@ -132,13 +138,65 @@ export const styles = ( theme ) => ({
     width: '100%',
    },
    tableBody: {
+    width: '100%',
     flexGrow: 1,
    },
-    tableCell: {
-      padding: 5 ,
-      // margin: 0,
-      textAlign: 'left'
+   head: {
+    // backgroundColor: "#fff",
+    fontSize: 12,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.secondary.contrastText,
+    // padding: 5 ,
+    textAlign: 'left',
+    position: "sticky",
+    top: 0,
+    zIndex: 10,
+   },
+  activeSortIcon: {
+    color: "white"
+  },
+  inactiveSortIcon: {
+    color: "white"
+  },
+  icon: {
+    root: {
+      color: 'white',
+      "&:hover": {
+        color: 'white',
+      },
+      '&$active': {
+        color: 'white',
+      },
     },
+    active: {},
+    icon: {
+      color: 'inherit !important'
+    },
+  },
+    tableCell: {
+      // padding: 5 ,
+      // margin: 0,
+      textAlign: 'left',
+      fontSize: 12
+    },
+    visuallyHidden: {
+      border: 0,
+      clip: 'rect(0 0 0 0)',
+      height: 1,
+      margin: -1,
+      overflow: 'hidden',
+      padding: 0,
+      position: 'absolute',
+      top: 20,
+      width: 1,
+    },
+    icon: {
+      backgroundColor: "grey[500]",
+      '& path': {
+          fill: '#eee'
+      },
+     
+  }
   //   tableRow: {
   //     flexGrow: 1,
   //     width:100,
