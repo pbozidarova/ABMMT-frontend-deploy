@@ -19,8 +19,8 @@ import tasksImg from '../../src/images/tasks.jfif'
 import usersImg from '../../src/images/users.jfif'
 
 
-export const BACKEND_URL = 'http://localhost:8000';
-// export const BACKEND_URL = 'https://abmmtool.herokuapp.com';
+// export const BACKEND_URL = 'http://localhost:8000';
+export const BACKEND_URL = 'https://abmmtool.herokuapp.com';
 export const SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
 export const MESSAGES = {
